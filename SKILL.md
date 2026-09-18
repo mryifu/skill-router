@@ -31,7 +31,7 @@ Preserve explicit user choices. If the user names a skill, include it unless it 
    - review before claiming completion.
 5. Announce the route in at most five short lines, then proceed. Example:
 
-   `Route: ponytail → brainstorming → writing-plans → tdd → verification-before-completion.`
+   `Route: ponytail → grill-with-docs → writing-plans → tdd → verification-before-completion.`
 
    State one short reason for any non-obvious skill. Do not dump the entire skill catalog.
 
@@ -69,11 +69,19 @@ Use the narrow task skill plus the smallest relevant verification. Examples:
 
 Do not add planning, worktrees, or agents for a genuinely small change.
 
-### Medium feature or multi-file change
+### Project development and requirements discovery
+
+For a non-trivial feature, new subsystem, architecture change, or multi-file project task, use a grilling skill before planning:
+
+- When working inside a repository or project directory, prefer `grill-with-docs`. It records resolved vocabulary and durable decisions in the project's documentation.
+- When there is no repository or working directory, use `grill-me`. It performs the same pressure-testing without writing project docs.
+- If the request is already precise and genuinely small, skip both grilling skills.
 
 Use:
 
-`ponytail` → `brainstorming` when requirements or behavior are unclear → `writing-plans` → `tdd` or the relevant implementation skill → `verification-before-completion`.
+`ponytail` → `grill-with-docs` or `grill-me` → `writing-plans` → `tdd` or the relevant implementation skill → `verification-before-completion`.
+
+Do not add `brainstorming` on top of `grill-me` or `grill-with-docs` for the same requirements discussion; choose the grilling skill as the single discovery phase. Use `brainstorming` for creative work that does not fit either project-context mode.
 
 Use `using-git-worktrees` when isolation is useful and the work is in a Git repository. Use `requesting-code-review` when the change is substantial or review was requested.
 
@@ -83,7 +91,7 @@ Treat a task as large when it spans multiple subsystems, introduces a new app or
 
 Recommended chain:
 
-`ponytail` → `brainstorming` → `writing-plans` → `using-git-worktrees` → `subagent-driven-development` or `dispatching-parallel-agents` when workstreams are genuinely independent → `tdd` per implementation slice → `requesting-code-review` → `verification-before-completion`.
+`ponytail` → `grill-with-docs` or `grill-me` → `writing-plans` → `using-git-worktrees` → `subagent-driven-development` or `dispatching-parallel-agents` when workstreams are genuinely independent → `tdd` per implementation slice → `requesting-code-review` → `verification-before-completion`.
 
 Do not invoke parallel-agent skills merely because a task is large. Use them only when the subtasks have clear boundaries and do not share mutable state. Keep sequential dependencies in the main chain.
 

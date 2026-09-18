@@ -25,7 +25,7 @@ $skill-router Build a dashboard with authentication, a database, and end-to-end 
 The router will briefly report a route such as:
 
 ```text
-ponytail → brainstorming → writing-plans → tdd → verification-before-completion
+ponytail → grill-with-docs → writing-plans → tdd → verification-before-completion
 ```
 
 Then it will load and apply the selected skills in dependency order.
@@ -36,11 +36,11 @@ Then it will load and apply the selected skills in dependency order.
 
 Coding, refactoring, dependency, and architecture work uses `ponytail` as a simplicity gate by default. It checks for existing code, standard-library solutions, native platform features, and unnecessary abstractions before implementation.
 
-Small tasks stay small. A larger project may add:
+Small, precise changes skip the grilling phase. For a non-trivial project task, the router uses `grill-with-docs` when a repository is available, or `grill-me` when there is no project directory. A larger project may add:
 
 ```text
 ponytail
-→ brainstorming
+→ grill-with-docs or grill-me
 → writing-plans
 → using-git-worktrees
 → subagent-driven-development or dispatching-parallel-agents
