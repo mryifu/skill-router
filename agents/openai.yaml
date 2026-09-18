@@ -1,0 +1,6 @@
+interface:
+  display_name: "Skill Router"
+  short_description: "Select and sequence the best installed Codex skills for a task"
+  default_prompt: "Route this task to the best installed skills, explain the route briefly, then execute it."
+policy:
+  allow_implicit_invocation: false
