@@ -31,7 +31,7 @@ Preserve explicit user choices. If the user names a skill, include it unless it 
    - review before claiming completion.
 5. Announce the route in at most five short lines, then proceed. Example:
 
-   `Route: ponytail → grill-with-docs → writing-plans → tdd → verification-before-completion.`
+   `Route: ponytail → grill-with-docs → writing-plans → handoff → tdd → verification-before-completion.`
 
    State one short reason for any non-obvious skill. Do not dump the entire skill catalog.
 
@@ -79,9 +79,9 @@ For a non-trivial feature, new subsystem, architecture change, or multi-file pro
 
 Use:
 
-`ponytail` → `grill-with-docs` or `grill-me` → `writing-plans` → `tdd` or the relevant implementation skill → `verification-before-completion`.
+`ponytail` → `grill-with-docs` or `grill-me` → `writing-plans` → `handoff` when a context switch is planned → `tdd` or the relevant implementation skill → `verification-before-completion`.
 
-Do not add `brainstorming` on top of `grill-me` or `grill-with-docs` for the same requirements discussion; choose the grilling skill as the single discovery phase. Use `brainstorming` for creative work that does not fit either project-context mode.
+Use the grilling skill as the single requirements-discovery phase. Do not add another discovery workflow on top of `grill-me` or `grill-with-docs`.
 
 Use `using-git-worktrees` when isolation is useful and the work is in a Git repository. Use `requesting-code-review` when the change is substantial or review was requested.
 
@@ -91,7 +91,22 @@ Treat a task as large when it spans multiple subsystems, introduces a new app or
 
 Recommended chain:
 
-`ponytail` → `grill-with-docs` or `grill-me` → `writing-plans` → `using-git-worktrees` → `subagent-driven-development` or `dispatching-parallel-agents` when workstreams are genuinely independent → `tdd` per implementation slice → `requesting-code-review` → `verification-before-completion`.
+`ponytail` → `grill-with-docs` or `grill-me` → `writing-plans` → `using-git-worktrees` → `handoff` → `subagent-driven-development` or `dispatching-parallel-agents` when workstreams are genuinely independent → `tdd` per implementation slice → `requesting-code-review` → `verification-before-completion`.
+
+Use `handoff` at every planned conversation or agent change before implementation begins. The handoff must make the next session implementation-ready rather than asking it to rediscover the project.
+
+The handoff document must include:
+
+- objective, scope, and non-goals;
+- decisions and vocabulary resolved during grilling;
+- the approved implementation plan and ticket/dependency order;
+- repository, branch, worktree, and relevant artifact paths;
+- files or modules to change and current implementation state;
+- selected skills for the next phase;
+- exact first implementation action and verification command;
+- blockers, open questions, and explicit assumptions.
+
+When a complete handoff exists, the next session should read it, inspect the named paths, and enter implementation directly. It should not repeat grilling unless the handoff has a material gap or the user changes the scope.
 
 Do not invoke parallel-agent skills merely because a task is large. Use them only when the subtasks have clear boundaries and do not share mutable state. Keep sequential dependencies in the main chain.
 

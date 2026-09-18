@@ -25,7 +25,7 @@ $skill-router Build a dashboard with authentication, a database, and end-to-end 
 The router will briefly report a route such as:
 
 ```text
-ponytail → grill-with-docs → writing-plans → tdd → verification-before-completion
+ponytail → grill-with-docs → writing-plans → handoff → tdd → verification-before-completion
 ```
 
 Then it will load and apply the selected skills in dependency order.
@@ -43,6 +43,7 @@ ponytail
 → grill-with-docs or grill-me
 → writing-plans
 → using-git-worktrees
+→ handoff
 → subagent-driven-development or dispatching-parallel-agents
 → tdd
 → requesting-code-review
@@ -50,6 +51,12 @@ ponytail
 ```
 
 Parallel-agent skills are selected only when subtasks have clear boundaries and do not share mutable state.
+
+### Conversation handoff
+
+For a planned conversation or agent change, the router uses `handoff` after requirements and planning are settled. The handoff document records the objective, scope, decisions, plan, repository and worktree paths, current state, selected next skills, first implementation action, verification command, blockers, and assumptions.
+
+The next conversation should read that document and begin implementation directly. It should not repeat requirements discovery unless the handoff is incomplete or the scope changes.
 
 ### Specialist tasks
 
